@@ -1,23 +1,28 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import PersonItem from "@/components/PersonItem.vue";
+import CardPerson from "@/components/CardPerson.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-      <PersonItem />
-    </div>
 
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <CardPerson
+      :description="'UTILISATEUR'"
+      :avatar="'/images/user.png'"
+      :button_caption="'CREATE'"
+  />
+
+  <CardPerson
+      :description="'ADMINISTRATEUR'"
+      :avatar="'/images/admin.png'"
+      :button_caption="'CREATE'"
+  />
+
+
+
+
 </template>
 
 <style scoped>
