@@ -24,6 +24,10 @@
     }
   })
 
+  import { requestApi } from "../api/apiRequest.js";
+
+  
+
 </script>
 
 <style scoped>
@@ -47,6 +51,11 @@ button{
   border-color: black;
   border-style: solid;
   background: white;
+  padding : 1.5% 2% 1.5% 2%;
+}
+
+button:hover{
+  background-color: grey;
 }
 
 </style>
