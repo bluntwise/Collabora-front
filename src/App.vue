@@ -1,24 +1,18 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import CardPerson from "@/components/CardPerson.vue";
+
+import CardPerson from "@/components/creationViewUser/CardPerson.vue";
+import CardResult from "@/components/creationViewUser/CardResult.vue"
+import CreationUser from "@/components/CreationUser.vue";
 </script>
 
+
+
 <template>
+  <creation-user></creation-user>
 
 
 
-  <CardPerson
-      :description="'UTILISATEUR'"
-      :avatar="'/images/user.png'"
-      :button_caption="'CREATE'"
-  />
 
-  <CardPerson
-      :description="'ADMINISTRATEUR'"
-      :avatar="'/images/admin.png'"
-      :button_caption="'CREATE'"
-  />
 
 
 
