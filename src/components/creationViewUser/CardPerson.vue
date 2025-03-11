@@ -2,14 +2,14 @@
   <article>
     <span class="description">{{ description }}</span>
     <img class="logoUser" :src="avatar" alt="img">
-    <button>{{ button_caption }}</button>
+    <button @click="fetchUserData">{{ button_caption }}</button>
   </article>
 </template>
 
 
 
 <script setup>
-
+  import { fetchUserData } from "@/;
   const props = defineProps({
     avatar: {
       type: String,
@@ -24,7 +24,6 @@
       required: true
     }
   })
-
 
 
 

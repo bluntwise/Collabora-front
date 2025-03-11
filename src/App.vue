@@ -9,14 +9,6 @@ import CreationUser from "@/components/CreationUser.vue";
 
 <template>
   <creation-user></creation-user>
-
-
-
-
-
-
-
-
 </template>
 
 <style scoped>
