@@ -2,14 +2,21 @@
   <article>
     <span class="description">{{ description }}</span>
     <img class="logoUser" :src="avatar" alt="img">
-    <button @click="fetchUserData">{{ button_caption }}</button>
+    <button @click="loadUserData">{{ button_caption }}</button>
+
+<!--    <ul>-->
+<!--      <li v-for="user in userData">-->
+<!--         {{user.role}} - {{user.firstName}} - {{user.lastName}}-->
+<!--      </li>-->
+<!--    </ul>-->
   </article>
 </template>
 
 
 
 <script setup>
-  import { fetchUserData } from "@/;
+  import { ref } from "vue";
+  import { fetchUserData } from "@/api/apiRequest.js";
   const props = defineProps({
     avatar: {
       type: String,
@@ -24,7 +31,16 @@
       required: true
     }
   })
-
+  const userData = ref([]);
+  async function loadUserData() {
+    try{
+      const response = await fetchUserData();
+      console.log(response);
+      userData.value = await response;
+    }catch (error){
+      console.log(error);
+    }
+  }
 
 
 </script>

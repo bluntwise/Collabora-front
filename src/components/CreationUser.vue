@@ -12,12 +12,12 @@
       :button_caption="'CREATE'"
   />
 
-  <card-result title="resultat"/>
+  <form-user/>
 </template>
 
 <script setup>
   import CardPerson from "@/components/creationViewUser/CardPerson.vue";
-  import CardResult from "@/components/creationViewUser/CardResult.vue";
+  import formUser from "@/components/creationViewUser/formUser.vue";
 </script>
 
 <style scoped></style>
