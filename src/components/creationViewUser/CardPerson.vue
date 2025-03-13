@@ -2,13 +2,8 @@
   <article>
     <span class="description">{{ description }}</span>
     <img class="logoUser" :src="avatar" alt="img">
-    <button @click="loadUserData">{{ button_caption }}</button>
-
-<!--    <ul>-->
-<!--      <li v-for="user in userData">-->
-<!--         {{user.role}} - {{user.firstName}} - {{user.lastName}}-->
-<!--      </li>-->
-<!--    </ul>-->
+    <button @click="onClickButtonShow">{{ button_caption }}</button>
+    <button @click="onClickButtonHide">X</button>
   </article>
 </template>
 
@@ -29,7 +24,14 @@
     button_caption : {
       type: String,
       required: true
+    },
+    onClickButtonShow : {
+      type: Function
+    },
+    onClickButtonHide : {
+      type: Function
     }
+
   })
   const userData = ref([]);
   async function loadUserData() {
@@ -41,8 +43,6 @@
       console.log(error);
     }
   }
-
-
 </script>
 
 <style scoped>
