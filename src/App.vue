@@ -3,21 +3,22 @@
 import CardPerson from "@/components/creationViewUser/CardPerson.vue";
 import CardResult from "@/components/creationViewUser/CardResult.vue"
 import CreationUser from "@/components/CreationUser.vue";
+import MenuHome from "@/components/menuHome.vue";
+import CreationPage from "@/components/creationPage.vue";
 </script>
 
 
 
 <template>
 
-  <div>
-    <creation-user></creation-user>
-  </div>
-
+  <creation-page></creation-page>
 </template>
 <style scoped>
 
 header {
   line-height: 1.5;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {

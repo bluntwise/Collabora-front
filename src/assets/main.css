@@ -2,16 +2,22 @@
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
+
   padding: 2rem;
   font-weight: normal;
+
+  width: 100%; /* Facultatif */
+  height: 100vh; /* Toute la hauteur de la fenêtre */
+  background-color: lightgray; /* Juste pour visualisation */
 }
-
-
-
-body{
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
   background-color: white;
 }
+
 .green {
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
