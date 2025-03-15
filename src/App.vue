@@ -8,10 +8,14 @@ import CreationUser from "@/components/CreationUser.vue";
 
 
 <template>
-  <creation-user></creation-user>
-</template>
 
+  <div>
+    <creation-user></creation-user>
+  </div>
+
+</template>
 <style scoped>
+
 header {
   line-height: 1.5;
 }
@@ -19,6 +23,13 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+div{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -37,5 +48,7 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
+
 }
+
 </style>

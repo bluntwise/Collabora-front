@@ -2,14 +2,16 @@
   <article>
     <span class="description">{{ description }}</span>
     <img class="logoUser" :src="avatar" alt="img">
-    <button @click="fetchUserData">{{ button_caption }}</button>
+    <button @click="onClickButtonShow">{{ button_caption }}</button>
+    <button @click="onClickButtonHide">X</button>
   </article>
 </template>
 
 
 
 <script setup>
-  import { fetchUserData } from "@/";
+  import { ref } from "vue";
+  import { fetchUserData } from "@/api/apiRequest.js";
   const props = defineProps({
     avatar: {
       type: String,
@@ -22,11 +24,25 @@
     button_caption : {
       type: String,
       required: true
+    },
+    onClickButtonShow : {
+      type: Function
+    },
+    onClickButtonHide : {
+      type: Function
     }
+
   })
-
-
-
+  const userData = ref([]);
+  async function loadUserData() {
+    try{
+      const response = await fetchUserData();
+      console.log(response);
+      userData.value = await response;
+    }catch (error){
+      console.log(error);
+    }
+  }
 </script>
 
 <style scoped>
