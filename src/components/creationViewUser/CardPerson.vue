@@ -9,7 +9,7 @@
 
 
 <script setup>
-  import { fetchUserData } from "@/;
+  import { fetchUserData } from "@/";
   const props = defineProps({
     avatar: {
       type: String,
