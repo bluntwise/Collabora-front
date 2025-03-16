@@ -10,4 +10,5 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-createApp(App).mount('#app')
+
+app.mount('#app') // ✅ Monte la bonne instance !

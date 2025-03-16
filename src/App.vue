@@ -5,13 +5,13 @@ import CardResult from "@/components/creationViewUser/CardResult.vue"
 import CreationUser from "@/components/CreationUser.vue";
 import MenuHome from "@/components/menuHome.vue";
 import CreationPage from "@/components/creationPage.vue";
+import BaseContainer from "@/components/layout/BaseContainer.vue";
 </script>
 
 
 
 <template>
-
-  <creation-page></creation-page>
+  <base-container></base-container>
 </template>
 <style scoped>
 
