@@ -1,13 +1,13 @@
 <template>
-  <h1>Home Page
-  </h1>
-  <h1>{{ response }}</h1>
-  <ul v-if="response">
-    <li v-for="user in response" :key="user._id">
-      <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
-      <em>{{ user.role }}</em> ({{ user.email }})
-    </li>
-  </ul>
+  <div class="response">
+    <ul v-if="response">
+      <li v-for="user in response" :key="user._id" class="users">
+        <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
+        <em>{{ user.role }}</em> ({{ user.email }})
+      </li>
+    </ul>
+  </div>
+
 </template>
 
 <script setup>
@@ -23,4 +23,15 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+  .users{
+    color: black;
+  }
+  ul{
+    padding: 0;
+    list-style-type: none;
+  }
+  .response{
+    margin: auto;
+  }
+</style>

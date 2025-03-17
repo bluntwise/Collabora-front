@@ -1,9 +1,9 @@
 <template>
   <div class="navbar">
     <ul>
-      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/">Users</router-link></li>
       <li><router-link to="/">Projects</router-link></li>
-      <li><router-link to="/creation">creation</router-link></li>
+      <li><router-link to="/creation">Creation</router-link></li>
     </ul>
   </div>
 
@@ -23,6 +23,8 @@ ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  padding: 0;
+  margin: 2em auto;
 
 }
 

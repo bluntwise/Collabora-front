@@ -1,58 +1,64 @@
 <template>
   <form @submit.prevent="addUser" class="form-container" method="post">
       <div class="form-group">
-        <input type="text" name="firstName" placeholder="First Name" required class="input-field" for="firstName"/>
+        <input type="text" name="firstName" placeholder="First Name" required class="input-field" for="firstName" v-model="user.firstName"/>
       </div>
       <div class="form-group">
-        <input type="text" name="lastName" placeholder="Last Name" required class="input-field" for="lastName"/>
+        <input type="text" name="lastName" placeholder="Last Name" required class="input-field" for="lastName" v-model="user.lastName"/>
       </div>
       <div class="form-group">
-        <input type="text" name="email" placeholder="Email" required class="input-field" for="email"/>
+        <input type="text" name="email" placeholder="Email" required class="input-field" for="email" v-model="user.email"/>
       </div>
       <div class="form-group">
-        <input type="text" name="password" placeholder="Password" required class="input-field" for="password"/>
+        <input type="text" name="password" placeholder="Password" required class="input-field" for="password" v-model="user.password"/>
       </div>
       <div class="form-group">
-        <input type="text" name="role" placeholder="Role" required class="input-field" for="role" v-model="role"/>
+        <input type="text" name="role" placeholder="Role" required class="input-field" for="role" v-model="roleLocal" />
       </div>
       <div class="form-button">
-        <button type="submit" class="btn-submit">Submit</button>
+        <button type="submit" class="btn-submit" @submit.prevent="addUser">Submit</button>
       </div>
   </form>
 </template>
 
 <script setup>
-  import { ref, watch } from "vue";
-  const firstName = ref('');
-  const lastName = ref('');
-  const email = ref('');
-  const role = ref('');
-  const password = ref('');
+import {ref, watch, onMounted} from "vue";
+import { createUser } from "@/api/apiRequest.js";
 
-  const props = defineProps({
+const props = defineProps({
     role : {
       type: String
     }
   })
 
-  watch(() => props.role, (newRole) => {
-    role.value = newRole;
-    console.log(newRole);
+const roleLocal = ref(props.role)
+
+console.log(roleLocal.value)
+
+  const user = ref({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    role: props.role || '',
   });
 
-  async function addUser() {
-    const userData = {
-      firstName : firstName.value,
-      lastName : lastName.value,
-      email : email.value,
-      role : role.value,
-      password: password.value,
+  watch(() => props.role, (newRole) => {
+    user.value.role = newRole;
+    roleLocal.value = newRole;
+  });
+  onMounted(() => {
+    if (!user.value.role) {
+      user.value.role = props.role;
     }
+  });
+
+  const addUser = async () => {
+    user.value.role = roleLocal.value;
+    const response = await createUser(user.value);
+
   }
 
-  console.log(props.role)
-
-  role.value = props.role;
 </script>
 
 <style scoped>
