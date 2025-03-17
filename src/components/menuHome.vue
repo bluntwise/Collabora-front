@@ -1,18 +1,29 @@
 <template>
-  <div class="navbar"></div>
-  <ul>
-    <li><a href="@/components/homePage.vue">Home</a></li>
-    <li><a href="">Projects</a></li>
-    <li><a href="">Creation</a></li>
-  </ul>
+  <div class="navbar">
+    <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/">Projects</router-link></li>
+      <li><router-link to="/creation">creation</router-link></li>
+    </ul>
+  </div>
+
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 <style scoped>
+
+.navbar{
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+
+}
 ul {
   list-style: none;
   display: flex;
   gap: 20px;
+
 }
 
 li {

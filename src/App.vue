@@ -6,11 +6,13 @@ import CreationUser from "@/components/CreationUser.vue";
 import MenuHome from "@/components/menuHome.vue";
 import CreationPage from "@/components/creationPage.vue";
 import BaseContainer from "@/components/layout/BaseContainer.vue";
+import BaseHeader from "@/components/layout/BaseHeader.vue";
 </script>
 
 
 
 <template>
+  <base-header></base-header>
   <base-container></base-container>
 </template>
 <style scoped>
