@@ -8,7 +8,7 @@
 
   width: 100%; /* Facultatif */
   height: 100vh;
-  background-color: lightgray; /* Juste pour visualisation */
+  background-color: black; /* Juste pour visualisation */
   overflow: auto;
 
 }

@@ -36,4 +36,8 @@ onMounted(async () => {
     display: flex;
     justify-content: center;
   }
+
+  .users{
+    color: white;
+  }
 </style>

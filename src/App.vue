@@ -2,9 +2,8 @@
 
 import CardPerson from "@/components/creationViewUser/CardPerson.vue";
 import CardResult from "@/components/creationViewUser/CardResult.vue"
-import CreationUser from "@/components/CreationUser.vue";
+import CreationUser from "@/components/Users/CreationUser.vue";
 import MenuHome from "@/components/menuHome.vue";
-import CreationPage from "@/components/creationPage.vue";
 import BaseContainer from "@/components/layout/BaseContainer.vue";
 import BaseHeader from "@/components/layout/BaseHeader.vue";
 </script>
