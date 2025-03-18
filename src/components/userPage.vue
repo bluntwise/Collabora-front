@@ -33,5 +33,7 @@ onMounted(async () => {
   }
   .response{
     margin: auto;
+    display: flex;
+    justify-content: center;
   }
 </style>

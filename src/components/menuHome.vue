@@ -2,7 +2,7 @@
   <div class="navbar">
     <ul>
       <li><router-link to="/">Users</router-link></li>
-      <li><router-link to="/">Projects</router-link></li>
+      <li><router-link to="/projects">Projects</router-link></li>
       <li><router-link to="/creation">Creation</router-link></li>
     </ul>
   </div>
@@ -44,11 +44,16 @@ li:hover {
 
 a {
   text-decoration: none;
-  color: white;
   font-size: 18px;
   font-weight: bold;
   display: block;
   background: none;
+  color: white;
+
+}
+
+a:focus {
+  color: red;
 }
 
 
