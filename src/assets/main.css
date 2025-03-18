@@ -1,21 +1,25 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+
 
   padding: 2rem;
   font-weight: normal;
 
   width: 100%; /* Facultatif */
-  height: 100vh; /* Toute la hauteur de la fenêtre */
+  height: 100vh;
   background-color: lightgray; /* Juste pour visualisation */
+  overflow: auto;
+
 }
 html, body {
   height: 100%;
   margin: 0;
+  width: 100%;
   display: flex;
   justify-content: center; /* Centre horizontalement */
   background-color: white;
+
 }
 
 .green {

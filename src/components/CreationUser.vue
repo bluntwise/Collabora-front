@@ -44,7 +44,9 @@
   }
 
   const removeForm = () => {
-    showForm.value = !showForm.value;
+    if (showForm.value === true){
+      showForm.value = !showForm.value;
+    }
   }
 </script>
 
@@ -53,6 +55,7 @@
 .roles{
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
 }
 
