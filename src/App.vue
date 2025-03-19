@@ -1,8 +1,8 @@
 <script setup>
 
 import CardPerson from "@/components/creationViewUser/CardPerson.vue";
-import CardResult from "@/components/creationViewUser/CardResult.vue"
-import CreationUser from "@/components/Users/CreationUser.vue";
+import CardProject from "@/components/creationViewUser/CardProject.vue"
+import CreationUser from "@/components/creationUser.vue";
 import MenuHome from "@/components/menuHome.vue";
 import BaseContainer from "@/components/layout/BaseContainer.vue";
 import BaseHeader from "@/components/layout/BaseHeader.vue";

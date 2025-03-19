@@ -1,13 +1,13 @@
 <template>
-  <creation-user></creation-user>
+  <creation-page></creation-page>
 </template>
 <script>
 import {defineComponent} from "vue";
-import CreationUser from "@/components/Users/CreationUser.vue";
+import CreationUser from "@/components/creationUser.vue";
+import CreationPage from "@/components/creationPage.vue";
 
-console.log("creation")
 
 export default defineComponent({
-  components: {CreationUser}
+  components: {CreationPage, CreationUser: CreationUser}
 })
 </script>

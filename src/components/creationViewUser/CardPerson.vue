@@ -40,6 +40,15 @@
 
 <style scoped>
 
+.description{
+  color: white;
+  font-size: 20px;
+  padding: 2% 5%;
+  border: white 3px solid;
+  margin-bottom: 10px;
+}
+
+
 article{
   display: flex;
   flex-direction: column;

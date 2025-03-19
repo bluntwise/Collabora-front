@@ -23,8 +23,12 @@
     </div>
 
     <div class="form">
-      <form-user v-if="showForm" :role="selectedRole"/>
+      <form-user v-if="showFormUser" :role="selectedRole"/>
     </div>
+
+
+
+
   </section>
 
 </template>
@@ -33,19 +37,20 @@
   import { ref } from "vue"
   import CardPerson from "@/components/creationViewUser/CardPerson.vue";
   import formUser from "@/components/creationViewUser/formUser.vue";
-  const showForm = ref(false);
+  import CardProject from "@/components/creationViewUser/CardProject.vue";
+  const showFormUser = ref(false);
   const selectedRole = ref(false);
 
   const showFormRole = (role) => {
-    if (!showForm.value) {
-      showForm.value = true;
+    if (!showFormUser.value) {
+      showFormUser.value = true;
     }
     selectedRole.value = role;
   }
 
-  const removeForm = () => {
-    if (showForm.value === true){
-      showForm.value = !showForm.value;
+  const removeFormUser = () => {
+    if (showFormUser.value === true){
+      showFormUser.value = !showForm.value;
     }
   }
 </script>
@@ -63,6 +68,10 @@
   display: flex;
   justify-content: center;
 }
-
+.projects{
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
 </style>
 
