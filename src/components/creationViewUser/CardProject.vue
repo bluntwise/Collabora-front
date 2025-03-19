@@ -61,7 +61,7 @@
 .description{
   color: white;
   font-size: 20px;
-  padding: 2% 5%;
+  padding: 1% 2%;
   border: white 3px solid;
   margin-bottom: 10px;
   width: fit-content;

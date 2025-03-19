@@ -9,7 +9,7 @@
           :avatar="'/images/user.png'"
           :button_caption="'CREATE'"
           :on-click-button-show="() => showFormRole('Team Member')"
-          :on-click-button-hide="() => removeForm()"
+          :on-click-button-hide="() => removeFormUser()"
 
       />
 
@@ -18,7 +18,7 @@
           :avatar="'/images/admin.png'"
           :button_caption="'CREATE'"
           :on-click-button-show="() => showFormRole('Admin')"
-          :on-click-button-hide="() => removeForm()"
+          :on-click-button-hide="() => removeFormUser()"
       />
     </div>
 

@@ -1,15 +1,15 @@
 <template>
 
-  <div class="projects">rojœ
+  <div class="projects">
     <card-project
-        title=""
-        project-id=""
-        end-date=""
-        start-date=""
-        description=""
-        team-members=""
-        project-manager-id=""
-        avatar=""
+        :title="'creation project'"
+        :project-id="'oiuahdha'"
+        :end-date="'2025-01-10'"
+        :start-date="'2025-02-15'"
+        :description="'Project'"
+        :team-members="'[]'"
+        :project-manager-id="'548547'"
+        :avatar="'/images/projects.png'"
         ></card-project>
   </div>
 </template>
