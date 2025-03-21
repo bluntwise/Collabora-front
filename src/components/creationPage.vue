@@ -2,11 +2,10 @@
 
   <div class="creation-page">
     <creation-user></creation-user>
-    <creation-projects></creation-projects>
-
+    <creation-project></creation-project>
   </div>
 </template>
 <script setup lang="ts">
 import CreationUser from "@/components/creationUser.vue";
-import CreationProjects from "@/components/creationProjects.vue";
+import CreationProject from "@/components/creationProject.vue";
 </script>

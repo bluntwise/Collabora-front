@@ -1,32 +1,18 @@
 <template>
   <article>
     <span class="description">{{ description }}</span>
-    <h1></h1>
     <img class="logoUser" :src="avatar" alt="img">
-    <div>
-
+    <div class="button_group">
+      <button @click="onClickButtonShow">{{ button_caption }}</button>
+      <button @click="onClickButtonHide">X</button>
     </div>
   </article>
 
 </template>
 
 <script setup>
-  import { ref, onMounted } from "vue";
   const props = defineProps({
     avatar : {
-      type: String,
-      required: true
-    },
-    projectManagerId : {
-      type: String,
-      required: true,
-    },
-    teamMembers : {
-      type: Array,
-      required: true,
-    },
-
-    title: {
       type: String,
       required: true
     },
@@ -34,26 +20,20 @@
       type: String,
       required: true
     },
-    startDate : {
-      type : String,
-      required: true
-    },
-    endDate : {
-      type : String,
-      required: true
-    },
-    projectId : {
+    button_caption : {
       type: String,
-      required : true
+      required: true
+    },
+    onClickButtonShow : {
+      type: Function
+    },
+    onClickButtonHide : {
+      type: Function
     }
 
+
+
   });
-
-  console.log(props.avatar);
-
-
-
-  const response = ref(null);
 
 </script>
 

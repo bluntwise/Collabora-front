@@ -32,7 +32,6 @@
     onClickButtonHide : {
       type: Function
     }
-
   })
   const userData = ref([]);
 </script>

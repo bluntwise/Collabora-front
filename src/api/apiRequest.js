@@ -32,3 +32,5 @@ export async function getProjects(){
         console.log(error);
     }
 }
+
+export async function addProject(projectData){}

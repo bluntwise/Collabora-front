@@ -50,7 +50,7 @@
 
   const removeFormUser = () => {
     if (showFormUser.value === true){
-      showFormUser.value = !showForm.value;
+      showFormUser.value = !showFormUser.value;
     }
   }
 </script>
