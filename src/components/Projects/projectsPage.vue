@@ -8,7 +8,7 @@
       <li v-for="(project) in response" :key="project.id">
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}
-        {{ project.projectManager }}
+        {{ project.projectManager  }}
 
       </li>
     </ul>
