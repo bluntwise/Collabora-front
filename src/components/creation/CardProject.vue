@@ -55,5 +55,21 @@ article{
   justify-content: center;
   align-items: center;
 }
+
+.button_group{
+  margin-top: 2em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2em;
+
+  &>button{
+    width: fit-content;
+    padding : 1em;
+    border-radius: 5em;
+    border-style: solid;
+  }
+}
 </style>
 

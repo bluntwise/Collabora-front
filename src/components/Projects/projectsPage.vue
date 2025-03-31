@@ -8,8 +8,8 @@
       <li v-for="(project) in response" :key="project.id">
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}
-        {{ project.projectManager  }}
-
+        <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
+        <em>{{ user.role }}</em> ({{ user.email }})
       </li>
     </ul>
     <h1 v-if="responseNotHere">EMPTY</h1>
@@ -22,7 +22,7 @@
   import { getProjects } from '@/api/apiRequest.js';
   const response = ref(null);
   const responseNotHere = ref(null);
-
+  const projectManager = ref(null);
   onMounted(async () => {
     response.value = await getProjects();
 
@@ -30,6 +30,8 @@
       console.log("EMPTY");
       responseNotHere.value = true
     }
+
+    
   })
 </script>
 <style scoped>

@@ -4,37 +4,35 @@
     <card-project
         :description="'Project'"
         :avatar="'/images/projects.png'"
-        :button_caption="'Project'"
+        :button_caption="'CREATE'"
         :on-click-button-show="() => showFormProject()"
         :on-click-button-hide="() => removeFormProject()"
         ></card-project>
   </div>
+  <form-project v-if="showForm">
 
-  <from-project>
-
-  </from-project>
+  </form-project>
 </template>
-<script>
+<script setup>
 import {defineComponent, ref} from "vue";
-import CardProject from "@/components/creationViewUser/CardProject.vue";
-import FormProject from "@/components/creationViewUser/formProject.vue";
-import FormUser from "@/components/creationViewUser/formUser.vue";
+import CardProject from "@/components/creation/CardProject.vue";
+import FormProject from "@/components/creation/formProject.vue";
+import FormUser from "@/components/creation/formUser.vue";
 
-const showFormUser = ref(false);
+const showForm = ref(false);
 
 const showFormProject = () => {
-  if (!showFormUser.value) {
-    showFormUser.value = true;
+  if (!showForm.value) {
+    showForm.value = true;
   }
+  console.log(showForm.value);
 }
 
 const removeFormProject = () => {
-  if (showFormUser.value === true){
-    showFormUser.value = !showFormUser.value;
+  if (showForm.value === true){
+    showForm.value = !showForm.value;
   }
+  console.log(showForm.value);
 }
-export default defineComponent({
-  components: {FormUser, FromProject: FormProject, CardProject}
-})
 </script>
 <style scoped></style>
