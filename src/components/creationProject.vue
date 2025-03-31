@@ -5,8 +5,8 @@
         :description="'Project'"
         :avatar="'/images/projects.png'"
         :button_caption="'Project'"
-        :on-click-button-show="'() => showFormProject()'"
-        :on-click-button-hide="'() => removeFormProject'()"
+        :on-click-button-show="() => showFormProject()"
+        :on-click-button-hide="() => removeFormProject()"
         ></card-project>
   </div>
 
@@ -17,7 +17,7 @@
 <script>
 import {defineComponent, ref} from "vue";
 import CardProject from "@/components/creationViewUser/CardProject.vue";
-import FromProject from "@/components/creationViewUser/fromProject.vue";
+import FormProject from "@/components/creationViewUser/formProject.vue";
 import FormUser from "@/components/creationViewUser/formUser.vue";
 
 const showFormUser = ref(false);
@@ -34,7 +34,7 @@ const removeFormProject = () => {
   }
 }
 export default defineComponent({
-  components: {FormUser, FromProject, CardProject}
+  components: {FormUser, FromProject: FormProject, CardProject}
 })
 </script>
 <style scoped></style>
