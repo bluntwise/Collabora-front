@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class = "container">
 
     <h1>Collabora</h1>
     <menu-home></menu-home>
@@ -11,10 +11,11 @@ import MenuHome from "@/components/menuHome.vue";
 </script>
 
 <style scoped>
-div{
+.container{
   display: flex;
-  height: fit-content;
   flex-direction: row;
   justify-content: space-between;
+  height: 10%;
+  margin-top: 2em;
 }
 </style>

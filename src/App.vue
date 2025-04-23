@@ -6,6 +6,7 @@ import CreationUser from "@/components/creationUser.vue";
 import MenuHome from "@/components/menuHome.vue";
 import BaseContainer from "@/components/layout/BaseContainer.vue";
 import BaseHeader from "@/components/layout/BaseHeader.vue";
+import BaseFooter from "@/components/layout/BaseFooter.vue";
 </script>
 
 
@@ -13,6 +14,7 @@ import BaseHeader from "@/components/layout/BaseHeader.vue";
 <template>
   <base-header></base-header>
   <base-container></base-container>
+  <base-footer></base-footer>
 </template>
 <style scoped>
 

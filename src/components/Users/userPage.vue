@@ -32,12 +32,14 @@ onMounted(async () => {
     list-style-type: none;
   }
   .response{
-    margin: auto;
+    margin: 2em auto;
     display: flex;
     justify-content: center;
+
   }
 
   .users{
-    color: white;
+    padding: 0.5em;
+    color: black;
   }
 </style>
