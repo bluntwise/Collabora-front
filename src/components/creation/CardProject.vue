@@ -1,6 +1,6 @@
 <template>
   <article>
-    <span class="description">{{ description }}</span>
+<!--    <span class="description">{{ description }}</span>-->
     <img class="logoUser" :src="avatar" alt="img">
     <div class="button_group">
       <button @click="onClickButtonShow">{{ button_caption }}</button>
@@ -57,7 +57,7 @@ article{
 }
 
 .button_group{
-  margin-top: 2em;
+  margin-top: 1em;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -68,7 +68,8 @@ article{
     width: fit-content;
     padding : 1em;
     border-radius: 5em;
-    border-style: solid;
+    background-color: white;
+    border : 1px solid black;
   }
 }
 </style>

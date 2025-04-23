@@ -3,12 +3,12 @@
 #app {
 
 
-  padding: 2rem;
+  padding: 0 2rem;
   font-weight: normal;
 
   width: 100%; /* Facultatif */
   height: 100vh;
-  background-color: black; /* Juste pour visualisation */
+  background-color: white; /* Juste pour visualisation */
   overflow: auto;
 
 }
