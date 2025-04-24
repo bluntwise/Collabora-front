@@ -2,7 +2,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function getUsers() {
     try {
-        const response = await fetch(apiUrl + "users/");
+        const response = await fetch(apiUrl + "/users");
          // ✅ ici on récupère les données
         const data = await response.json()
         return await data; // ✅ renvoie un tableau utilisable dans Vue
@@ -29,7 +29,7 @@ export async function createUser(userData){
 
 export async function getProjects(){
     try{
-        const response = await fetch(apiUrl + "projects");
+        const response = await fetch(apiUrl + "/projects");
         return await response.json();
     }catch (error){
         console.log(error);
