@@ -1,17 +1,20 @@
-export async function getUsers(){
-    try{
-        const response = await fetch("http://localhost:5000/api/v1/users/");
-        return await response.json();
-    }catch (error){
-        console.log(error);
+const apiUrl = import.meta.env.VITE_API_URL;
+
+export async function getUsers() {
+    try {
+        const response = await fetch(apiUrl + "users/");
+         // ✅ ici on récupère les données
+        const data = await response.json()
+        return await data; // ✅ renvoie un tableau utilisable dans Vue
+    } catch (error) {
+        console.error("Erreur dans getUsers:", error);
     }
 }
-
 
 export async function createUser(userData){
     const jsonData = JSON.stringify(userData);
     console.log(jsonData);
-    const response = await fetch("http://localhost:5000/api/v1/users", {
+    const response = await fetch(apiUrl + "/users", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",  // Indique qu'on envoie du JSON
@@ -26,7 +29,7 @@ export async function createUser(userData){
 
 export async function getProjects(){
     try{
-        const response = await fetch("http://localhost:5000/api/v1/projects");
+        const response = await fetch(apiUrl + "projects");
         return await response.json();
     }catch (error){
         console.log(error);

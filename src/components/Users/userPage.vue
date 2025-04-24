@@ -6,6 +6,13 @@
         <em>{{ user.role }}</em> ({{ user.email }})
       </li>
     </ul>
+
+
+    <!--    <ul v-if="response">-->
+<!--      <li v-for="user in response.value" :key="user._id">-->
+<!--        {{ user.firstName }} {{ user.lastName }}-->
+<!--      </li>-->
+<!--    </ul>-->
   </div>
 
 </template>
@@ -14,14 +21,13 @@
 import { ref, onMounted } from 'vue';
 import { getUsers } from '@/api/apiRequest.js';
 
-const response = ref(null); // Déclarer response comme réactive
+const response = ref([]); // Déclarer response comme réactive
 
 onMounted(async () => {
   response.value = await getUsers(); // Mettre à jour response
-  console.log(response.value);
-  console.log("RECEIVED");
 });
 </script>
+
 
 <style scoped>
   .users{
