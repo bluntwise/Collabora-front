@@ -17,7 +17,7 @@
           :description="'Admin'"
           :avatar="'/images/admin.png'"
           :button_caption="'CREATE'"
-          :on-click-button-show="() => showFormRole('Admin')"
+          :on-click-button-show="() => showFormRole('Administrator')"
           :on-click-button-hide="() => removeFormUser()"
       />
     </div>

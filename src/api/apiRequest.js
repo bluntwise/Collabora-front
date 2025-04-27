@@ -38,4 +38,6 @@ export async function getProjects(){
     }
 }
 
-export async function addProject(projectData){}
+export async function addProject(projectData){
+    console.log(projectData);
+}
