@@ -3,14 +3,16 @@
 <template>
 
   <div class="response">
-
     <ul v-if="response">
-      <li v-for="(project) in response" :key="project.id">
+      <li v-for="project in response" :key="project.id">
+        {{ project.name }}
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}
-        <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
-        <em>{{ user.role }}</em> ({{ user.email }})
+        <strong>{{ project.projectManager.firstName }} {{ project.projectManager.lastName }}</strong> -
+        <em>{{ project.projectManager.role }}</em> ({{ project.projectManager.email }})
       </li>
+
+
     </ul>
     <h1 v-if="responseNotHere">EMPTY</h1>
 
@@ -30,6 +32,7 @@
       console.log("EMPTY");
       responseNotHere.value = true
     }
+    console.log(response.value);
 
     
   })
@@ -38,12 +41,13 @@
   .response{
     display: flex;
     justify-content: center;
-    color : white;
+    color : black;
+    margin-top: 2em;
     & > ul {
       margin: 0;
       padding: 0;
       & > li {
-        color : white;
+        color : black;
       }
     }
   }

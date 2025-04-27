@@ -13,7 +13,7 @@ export async function getUsers() {
 
 export async function createUser(userData){
     const jsonData = JSON.stringify(userData);
-    console.log(jsonData);
+
     const response = await fetch(apiUrl + "/users", {
         method: "POST",
         headers: {
@@ -30,7 +30,9 @@ export async function createUser(userData){
 export async function getProjects(){
     try{
         const response = await fetch(apiUrl + "/projects");
-        return await response.json();
+        const data = await response.json();
+        console.log(data);
+        return data;
     }catch (error){
         console.log(error);
     }
