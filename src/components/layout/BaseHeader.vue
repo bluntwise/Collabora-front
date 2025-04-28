@@ -17,5 +17,6 @@ import MenuHome from "@/components/menuHome.vue";
   justify-content: space-between;
   height: 10%;
   margin-top: 2em;
+  color : black;
 }
 </style>
