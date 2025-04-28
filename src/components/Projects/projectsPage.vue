@@ -14,24 +14,29 @@
 
 
     </ul>
-    <h1 v-if="responseNotHere">EMPTY</h1>
+    <h1 v-if="responseNotHere">EMPTY Projects</h1>
 
 
   </div>
 </template>
 <script setup>
   import { onMounted, ref } from 'vue';
-  import { getProjects } from '@/api/useAPIRequest.js';
+  import useAPIRequest, { getProjects } from '@/api/useAPIRequest.js';
   const response = ref(null);
   const responseNotHere = ref(null);
   const projectManager = ref(null);
   onMounted(async () => {
-    response.value = await getProjects();
 
-    if (response.value.length === 0) {
-      console.log("EMPTY");
-      responseNotHere.value = true
-    }
+    let endpoint = "/projects";
+
+    response.value = await useAPIRequest({ endpoint : endpoint });
+
+    // response.value = await getProjects();
+    const data = response.value;
+    // if (data.length === 0) {
+    //   console.log("EMPTY");
+    //   responseNotHere.value = true
+    // }
     console.log(response.value);
 
     
