@@ -8,7 +8,7 @@
         {{ project.name }}
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}
-        <strong>{{ project.projectManager.firstName }} {{ project.projectManager.lastName }}</strong> -
+<!--        <strong>{{ project.projectManager.firstName }} {{ project.projectManager.lastName }}</strong> - -->
         <em>{{ project.projectManager.role }}</em> ({{ project.projectManager.email }})
       </li>
 
@@ -32,12 +32,13 @@
     response.value = await useAPIRequest({ endpoint : endpoint });
 
     // response.value = await getProjects();
-    const data = response.value;
     // if (data.length === 0) {
     //   console.log("EMPTY");
     //   responseNotHere.value = true
     // }
-    console.log(response.value);
+    for (let project of response.value) {
+      console.log(project)
+    }
 
     
   })
