@@ -21,7 +21,7 @@
 </template>
 <script setup>
   import { onMounted, ref } from 'vue';
-  import { getProjects } from '@/api/apiRequest.js';
+  import { getProjects } from '@/api/useAPIRequest.js';
   const response = ref(null);
   const responseNotHere = ref(null);
   const projectManager = ref(null);

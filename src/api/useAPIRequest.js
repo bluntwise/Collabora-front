@@ -1,3 +1,5 @@
+import {ref} from 'vue'
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export async function getUsers() {
@@ -40,4 +42,44 @@ export async function getProjects(){
 
 export async function addProject(projectData){
     console.log(projectData);
+}
+
+
+export default({method  = "GET", endpoint}) => {
+
+    const data = ref(null)
+    const errorMessage = ref(null);
+    const _request = async({endpoint : _endpoint, body}) => {
+        let url = import.meta.env.VITE_API_URL + _endpoint;
+        const isFormData = body instanceof FormData;
+        const response = await fetch(url, {
+            headers : {
+                ...(isFormData ? {} : { "content-type": "application/json" })
+            },
+            method : {
+                ...(body && { body : isFormData ? body : JSON.stringify(body) })
+            }
+        });
+
+        if (!response.ok) {
+            if (response.status === 400) {
+                const data = await response.json();
+                throw new Error(data[0].errors.issues[0].message);
+            }
+        }
+        data.value = await response.json();
+        return data;
+    }
+
+    const handle = async ({ endpoint : _endpoint, body }) => {
+        try{
+            return {
+                response: await _request({endpoint: _endpoint, body: body}),
+                error: null
+            }
+        }catch(error){
+
+        }
+    }
+
 }

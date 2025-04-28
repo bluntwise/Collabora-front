@@ -23,7 +23,7 @@
 
 <script setup>
 import {ref, watch, onMounted} from "vue";
-import { createUser } from "@/api/apiRequest.js";
+import { createUser } from "@/api/useAPIRequest.js";
 
 const props = defineProps({
     role : {

@@ -19,12 +19,15 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { getUsers } from '@/api/apiRequest.js';
+import { getUsers } from '@/api/useAPIRequest.js';
+import useAPIRequest from "@/api/useAPIRequest.js";
 
 const response = ref([]); // Déclarer response comme réactive
 
 onMounted(async () => {
-  response.value = await getUsers(); // Mettre à jour response
+  response.value = useAPIRequest({endpoint : '/users'});
+  console.log(response.value);
+  // response.value = await getUsers(); // Mettre à jour response
 });
 </script>
 

@@ -22,7 +22,7 @@
 </template>
 <script setup>
   import { ref } from 'vue'
-  import { addProject } from "@/api/apiRequest.js";
+  import { addProject } from "@/api/useAPIRequest.js";
 
   const project = ref({
     projectId : '',
