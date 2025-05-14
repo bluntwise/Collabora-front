@@ -22,6 +22,7 @@ import FormUser from "@/components/tools/formUser.vue";
 const showForm = ref(false);
 
 const showFormProject = () => {
+  console.log("alan")
   if (!showForm.value) {
     showForm.value = true;
   }

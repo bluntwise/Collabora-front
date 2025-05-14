@@ -1,7 +1,7 @@
 <template>
   <div class="response">
     <ul v-if="response">
-      <li v-for="user in response.value" :key="user._id" class="users">
+      <li v-for="user in response" :key="user._id" class="users">
         <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
         <em>{{ user.role }}</em> ({{ user.email }})
       </li>
@@ -27,8 +27,9 @@ const response = ref([]); // Déclarer response comme réactive
 
 onMounted(async () => {
 
-   response.value = await useAPIRequest({endpoint : '/users'});
-   // response.value = await getUsers(); // Mettre à jour response
+   // response.value = await useAPIRequest({endpoint : '/users'});
+   response.value = await getUsers(); // Mettre à jour response
+   console.log(response.value);
 });
 </script>
 
