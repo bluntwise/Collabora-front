@@ -3,7 +3,7 @@
 </template>
 <script>
 import {defineComponent} from "vue";
-import CreationUser from "@/components/creationUser.vue";
+import CreationUser from "@/components/creation/creationUser.vue";
 import CreationPage from "@/components/creationPage.vue";
 
 

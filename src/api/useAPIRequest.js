@@ -43,9 +43,7 @@ export async function getProjects(){
 export async function addProject(projectData){
     console.log(projectData);
 }
-
 export default ({ method = "GET", endpoint }) => {
-
     const data = ref(null);
     const errorMessage = ref(null);
 
@@ -53,39 +51,31 @@ export default ({ method = "GET", endpoint }) => {
         const url = import.meta.env.VITE_API_URL + _endpoint;
         const isFormData = body instanceof FormData;
 
-        const response = await fetch(url, {
-            method: method, // Ici on met la bonne méthode
-            headers: {
-                ...(isFormData ? {} : { "Content-Type": "application/json" })
-            },
-            ...(body ? { body: isFormData ? body : JSON.stringify(body) } : {})
-        });
+        // 1️⃣ On ne met Content-Type que si on a vraiment un body JSON
+        const headers = {};
+        if (body && !isFormData) {
+            headers["Content-Type"] = "application/json";
+        }
+
+        // 2️⃣ On n’ajoute options.body que si body est défini
+        const options = { method, headers };
+        if (body) {
+            options.body = isFormData
+                ? body
+                : JSON.stringify(body);
+        }
+
+        const response = await fetch(url, options);
 
         if (!response.ok) {
-            const errorData = await response.json();
-            errorMessage.value = errorData.message || `Error with status code: ${response.status}`;
+            const err = await response.json();
+            errorMessage.value = err.message || `Error ${response.status}`;
             throw new Error(errorMessage.value);
         }
 
         data.value = await response.json();
-        return data;
-    }
+        return data.value;
+    };
 
-    const handle = async ({ endpoint: _endpoint, body }) => {
-        try {
-            const response = await _request({ endpoint: _endpoint, body: body });
-            return {
-                response,
-                error: null
-            }
-        } catch (error) {
-            console.error("Error with handler: ", error);
-            return {
-                response: null,
-                error: error.message
-            }
-        }
-    }
-
-    return _request({ endpoint: endpoint }); // Ici, endpoint est passé dans les paramètres de base
-}
+    return _request({ endpoint });
+};

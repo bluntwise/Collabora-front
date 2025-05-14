@@ -1,12 +1,9 @@
 <script setup>
-
-import CardPerson from "@/components/creation/CardPerson.vue";
-import CardProject from "@/components/creation/CardProject.vue"
-import CreationUser from "@/components/creationUser.vue";
-import MenuHome from "@/components/menuHome.vue";
 import BaseContainer from "@/components/layout/BaseContainer.vue";
 import BaseHeader from "@/components/layout/BaseHeader.vue";
 import BaseFooter from "@/components/layout/BaseFooter.vue";
+import BaseToast from "@/components/ui/BaseToast.vue";
+
 </script>
 
 
@@ -15,7 +12,9 @@ import BaseFooter from "@/components/layout/BaseFooter.vue";
   <base-header></base-header>
   <base-container></base-container>
   <base-footer></base-footer>
+
 </template>
+
 <style scoped>
 
 header {

@@ -6,6 +6,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import CreationUser from "@/components/creationUser.vue";
-import CreationProject from "@/components/creationProject.vue";
+import CreationUser from "@/components/creation/creationUser.vue";
+import CreationProject from "@/components/creation/creationProject.vue";
 </script>

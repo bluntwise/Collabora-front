@@ -4,11 +4,11 @@
 
   <div class="response">
     <ul v-if="response">
-      <li v-for="project in response" :key="project.id">
+      <li v-for="project in response.value" :key="project.id">
         {{ project.name }}
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}
-<!--        <strong>{{ project.projectManager.firstName }} {{ project.projectManager.lastName }}</strong> - -->
+        <strong>{{ project.projectManager.firstName }} {{ project.projectManager.lastName }}</strong> -
         <em>{{ project.projectManager.role }}</em> ({{ project.projectManager.email }})
       </li>
 
@@ -30,15 +30,6 @@
     let endpoint = "/projects";
 
     response.value = await useAPIRequest({ endpoint : endpoint });
-
-    // response.value = await getProjects();
-    // if (data.length === 0) {
-    //   console.log("EMPTY");
-    //   responseNotHere.value = true
-    // }
-    for (let project of response.value) {
-      console.log(project)
-    }
 
     
   })

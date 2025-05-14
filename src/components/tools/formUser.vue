@@ -10,7 +10,7 @@
         <input type="text" name="email" placeholder="Email" required class="input-field" for="email" v-model="user.email"/>
       </div>
       <div class="form-group">
-        <input type="text" name="password" placeholder="Password" required class="input-field" for="password" v-model="user.password"/>
+        <input type="password" name="password" placeholder="Password" required class="input-field" for="password" v-model="user.password"/>
       </div>
       <div class="form-group">
         <input type="text" name="role" placeholder="Role" required class="input-field" for="role" v-model="roleLocal" />
@@ -24,6 +24,7 @@
 <script setup>
 import {ref, watch, onMounted} from "vue";
 import { createUser } from "@/api/useAPIRequest.js";
+import useAPIRequest from "@/api/useAPIRequest.js";
 
 const props = defineProps({
     role : {
@@ -51,13 +52,25 @@ console.log(roleLocal.value)
     if (!user.value.role) {
       user.value.role = props.role;
     }
+
+
   });
 
   const addUser = async () => {
     user.value.role = roleLocal.value;
-    const response = await createUser(user.value);
 
-  }
+    const { response, error } = await useAPIRequest({
+      method: "POST",
+      endpoint: "/users",
+      body: user.value      // ← on transmet le contenu à poster
+    });
+
+    if (!error) {
+      window.toast("User " + user.value.firstName + " stored");
+    } else {
+      console.error(error);
+    }
+  };
 
 </script>
 
@@ -86,7 +99,7 @@ console.log(roleLocal.value)
   text-align: center;
   width: 30%;
 
-  & > input[type="text"]{
+  & > input[type="text"], & > input[type="password"]{
     width: 100%;
     border-radius: 5px;
     padding: 0.5em;

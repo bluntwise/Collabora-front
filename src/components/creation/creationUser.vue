@@ -35,9 +35,9 @@
 
 <script setup>
   import { ref } from "vue"
-  import CardPerson from "@/components/creation/CardPerson.vue";
-  import formUser from "@/components/creation/formUser.vue";
-  import CardProject from "@/components/creation/CardProject.vue";
+  import CardPerson from "@/components/tools/CardPerson.vue";
+  import formUser from "@/components/tools/formUser.vue";
+  import CardProject from "@/components/tools/CardProject.vue";
   const showFormUser = ref(false);
   const selectedRole = ref(false);
 

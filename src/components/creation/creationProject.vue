@@ -15,9 +15,9 @@
 </template>
 <script setup>
 import {defineComponent, ref} from "vue";
-import CardProject from "@/components/creation/CardProject.vue";
-import FormProject from "@/components/creation/formProject.vue";
-import FormUser from "@/components/creation/formUser.vue";
+import CardProject from "@/components/tools/CardProject.vue";
+import FormProject from "@/components/tools/formProject.vue";
+import FormUser from "@/components/tools/formUser.vue";
 
 const showForm = ref(false);
 
