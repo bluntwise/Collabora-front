@@ -27,9 +27,8 @@ const response = ref([]); // Déclarer response comme réactive
 
 onMounted(async () => {
 
-   // response.value = await useAPIRequest({endpoint : '/users'});
-   response.value = await getUsers(); // Mettre à jour response
-   console.log(response.value);
+   response.value = await useAPIRequest({endpoint : '/users'});
+   // response.value = await getUsers(); // Mettre à jour response
 });
 </script>
 
