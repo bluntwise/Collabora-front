@@ -23,7 +23,6 @@
 
 <script setup>
 import {ref, watch, onMounted} from "vue";
-import { createUser } from "@/api/useAPIRequest.js";
 import useAPIRequest from "@/api/useAPIRequest.js";
 
 const props = defineProps({
@@ -33,7 +32,7 @@ const props = defineProps({
   })
 
 const roleLocal = ref(props.role)
-
+const response = ref(null);
 console.log(roleLocal.value)
 
   const user = ref({
@@ -58,12 +57,10 @@ console.log(roleLocal.value)
 
   const addUser = async () => {
     user.value.role = roleLocal.value;
+    const { data, error, request } = useAPIRequest({ method: "POST" });
+    console.log(user.value)
+    response.value = await request({ endpoint: "/users", body: user.value });
 
-    const { response, error } = await useAPIRequest({
-      method: "POST",
-      endpoint: "/users",
-      body: user.value      // ← on transmet le contenu à poster
-    });
 
     if (!error) {
       window.toast("User " + user.value.firstName + " stored");

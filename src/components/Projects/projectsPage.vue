@@ -21,17 +21,14 @@
 </template>
 <script setup>
   import { onMounted, ref } from 'vue';
-  import useAPIRequest, { getProjects } from '@/api/useAPIRequest.js';
+  import useAPIRequest from '@/api/useAPIRequest.js';
   const response = ref(null);
   const responseNotHere = ref(null);
   const projectManager = ref(null);
+
   onMounted(async () => {
-
-    let endpoint = "/projects";
-
-    response.value = await useAPIRequest({ endpoint : endpoint });
-
-    
+    const { error, request } = useAPIRequest({method : "GET"});
+    response.value = await request({endpoint : "/projects"})
   })
 </script>
 <style scoped>
