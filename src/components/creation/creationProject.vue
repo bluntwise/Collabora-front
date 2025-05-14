@@ -8,6 +8,7 @@
         :on-click-button-show="() => showFormProject()"
         :on-click-button-hide="() => removeFormProject()"
         ></card-project>
+
   </div>
   <form-project v-if="showForm">
 

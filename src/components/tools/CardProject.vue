@@ -6,11 +6,14 @@
       <button @click="onClickButtonShow">{{ button_caption }}</button>
       <button @click="onClickButtonHide">X</button>
     </div>
+    <custom-drop-down></custom-drop-down>
   </article>
 
 </template>
 
 <script setup>
+  import CustomDropDown from "@/components/ui/CustomDropDown.vue";
+
   const props = defineProps({
     avatar : {
       type: String,
