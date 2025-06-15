@@ -15,7 +15,6 @@ export default function ({ method = "GET" }) {
         const url = apiUrl + endpoint;
         const isFormData = body instanceof FormData;
 
-        console.log("x-api-key",apiKey )
         const headers = {
             "x-api-key": import.meta.env.VITE_API_KEY, // 🔐 encore mieux : stocker dans .env
         };
@@ -30,7 +29,6 @@ export default function ({ method = "GET" }) {
 
         try {
             const response = await fetch(url, options);
-
             if (!response.ok) {
                 const err = await response.json();
                 errorMessage.value = err.message || `Error ${response.status}`;
