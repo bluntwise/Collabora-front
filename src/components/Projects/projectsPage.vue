@@ -25,11 +25,13 @@
   const response = ref(null);
   const responseNotHere = ref(null);
   const projectManager = ref(null);
-
+  
   onMounted(async () => {
     const { error, request } = useAPIRequest({method : "GET"});
     response.value = await request({endpoint : "/projects"})
+    console.log(response.value)
   })
+  
 </script>
 <style scoped>
   .response{

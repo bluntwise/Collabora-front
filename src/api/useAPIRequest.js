@@ -16,7 +16,7 @@ export default function ({ method = "GET" }) {
         const isFormData = body instanceof FormData;
 
         const headers = {
-            "x-api-key": import.meta.env.VITE_API_KEY, // 🔐 encore mieux : stocker dans .env
+            "x-api-key": apiKey, // 🔐 encore mieux : stocker dans .env
         };
         if (body && !isFormData) {
             headers["Content-Type"] = "application/json";

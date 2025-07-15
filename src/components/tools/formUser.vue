@@ -33,7 +33,6 @@ const props = defineProps({
 
 const roleLocal = ref(props.role)
 const response = ref(null);
-console.log(roleLocal.value)
 
   const user = ref({
     firstName: '',
@@ -58,7 +57,6 @@ console.log(roleLocal.value)
   const addUser = async () => {
     user.value.role = roleLocal.value;
     const { data, error, request } = useAPIRequest({ method: "POST" });
-    console.log(user.value)
     response.value = await request({ endpoint: "/users", body: user.value });
 
 
