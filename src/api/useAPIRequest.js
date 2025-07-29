@@ -1,30 +1,27 @@
-import {ref} from 'vue';
+// src/api/useAPIRequest.js
+import { ref } from 'vue';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export async function addProject(projectData){
-    console.log(projectData);
-}
-
-export default function ({ method = "GET" }) {
+export default function useAPIRequest({ method = 'GET' } = {}) {
     const data = ref(null);
     const errorMessage = ref(null);
+    const loading = ref(false);
 
-    const request = async ({ endpoint, body }) => {
-        const url = apiUrl + endpoint;
-        const isFormData = body instanceof FormData;
+    async function request({ endpoint, body = null }) {
+        loading.value = true;
+        errorMessage.value = null;
 
-        const headers = {
-            "x-api-key": apiKey, // 🔐 encore mieux : stocker dans .env
-        };
-        if (body && !isFormData) {
-            headers["Content-Type"] = "application/json";
+        const url = `${apiUrl}${endpoint}`;
+        const headers = { 'x-api-key': apiKey };
+        if (body && !(body instanceof FormData)) {
+            headers['Content-Type'] = 'application/json';
         }
 
         const options = { method, headers };
         if (body) {
-            options.body = isFormData ? body : JSON.stringify(body);
+            options.body = body instanceof FormData ? body : JSON.stringify(body);
         }
 
         try {
@@ -34,18 +31,12 @@ export default function ({ method = "GET" }) {
                 errorMessage.value = err.message || `Error ${response.status}`;
                 throw new Error(errorMessage.value);
             }
-
             data.value = await response.json();
             return data.value;
-        } catch (error) {
-            errorMessage.value = error.message;
-            throw error;
+        } finally {
+            loading.value = false;
         }
-    };
+    }
 
-    return {
-        data,
-        errorMessage,
-        request
-    };
+    return { data, errorMessage, loading, request };
 }

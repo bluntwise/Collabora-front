@@ -44,13 +44,14 @@
           placeholder="-- Sélectionner un chef de projet --"
         />
     </div>
-    
+
     <div class="form-group">
         <CustomDropDown
-          label="Membres de l’équipe"
-          :options="users"
-          v-model="project.teamMembers"
-          multiple
+            label="Membres de l’équipe"
+            :options="users"
+            v-model="project.teamMembers"
+            @update:modelValue="val => console.log('membres sélectionnés :', val)"
+            multiple
         />
     </div>
     
@@ -79,24 +80,34 @@ const projectManagers = ref([])
 onMounted(async () => {
   const { request } = useAPIRequest({ method: "GET" });
   try {
-    const data = await request({ endpoint: "/users" });
-    users.value = (data || []).filter(user => user.role === "Team Member");
-    projectManagers.value = (data || []).filter(user => user.role === "Project Manager")
-  } catch (error) {
-    console.error("Erreur lors du chargement des utilisateurs :", error);
+    const raw = await request({ endpoint: "/users" });
+
+    users.value = (raw || [])
+        .filter(u => u.role === "Team Member");
+    projectManagers.value = (raw || [])
+        .filter(u => u.role === "Administrator");
+  } catch (err) {
+    console.error(err);
   }
+
+
 });
 
+
+// dans <script setup>
+const { data, errorMessage, loading, request } = useAPIRequest({ method: 'POST' });
+
 async function addProject() {
-  const { request } = useAPIRequest({ method: "POST" });
   try {
-    console.log(project.value)
-    await request({ endpoint: "/projects", body: project.value });
-    alert("Projet créé !");
-  } catch (error) {
-    console.error("Erreur :", error);
+    await request({ endpoint: '/projects', body: project.value });
+    window.toast("Project " + project.value.projectId + " stored");
+
+
+  } catch (err) {
+    console.error(errorMessage.value);
   }
 }
+
 </script>
 
 <style scoped>
