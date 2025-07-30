@@ -14,33 +14,37 @@
           Supprimer
         </button>
       </li>
-
-
     </ul>
     <h1 v-if="responseNotHere">EMPTY Projects</h1>
-
-
   </div>
+
 </template>
 <script setup>
   import { onMounted, ref } from 'vue';
   import useAPIRequest from '@/api/useAPIRequest.js';
+
   const response = ref(null);
   const responseNotHere = ref(null);
-  const projectManager = ref(null);
   const projects = ref([]);
 
   const { request: fetchProjects, errorMessage: errFetch } = useAPIRequest({ method: 'GET' });
   const { request: deleteRequest, errorMessage: errDelete, loading } = useAPIRequest({ method: 'DELETE' });
+
   onMounted(async () => {
-    try{
-      response.value = await fetchProjects({endpoint : "/projects"})
-      console.log(response.value)
-      projects.value = await response.value;
-    }catch(err){
-      console.log(errFetch.value)
+    try {
+      const result = await fetchProjects({ endpoint: "/projects" });
+      if (result && result.length > 0) {
+        projects.value = result;
+        response.value = true;
+      } else {
+        responseNotHere.value = true;
+      }
+    } catch (err) {
+      console.log(errFetch.value);
+      responseNotHere.value = true;
     }
-  })
+  });
+
 
   async function onDelete(projectId) {
     try{
@@ -52,7 +56,7 @@
 
     }
   }
-  
+
 </script>
 <style scoped>
   .response{

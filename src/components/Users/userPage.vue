@@ -13,11 +13,7 @@
     <h1 v-else>EMPTY Users</h1>
 
 
-    <!--    <ul v-if="response">-->
-<!--      <li v-for="user in response.value" :key="user._id">-->
-<!--        {{ user.firstName }} {{ user.lastName }}-->
-<!--      </li>-->
-<!--    </ul>-->
+
   </div>
 
 </template>
@@ -32,7 +28,7 @@ const { request: deleteRequest, errorMessage: errDelete, loading } = useAPIReque
 onMounted(async () => {
 
    const {data, error, request} = useAPIRequest({method : "GET"});
-   console.log(data);
+
    response.value = await request({endpoint : "/users"})
 });
 

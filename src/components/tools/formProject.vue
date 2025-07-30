@@ -22,19 +22,6 @@
       <input type="date" name="endDate" placeholder="endDate" required class="input-field" v-model="project.endDate" />
     </div>
 
-    <!-- <div class="form-group">
-      <label>Chef de projet</label>
-      <input type="text" name="projectManager" placeholder="projectManager" required class="input-field" v-model="project.projectManager" />
-    </div> -->
-
-    <!-- <div class="form-group">
-      <label>Membres de l’équipe</label>
-      <select id="teamMembers" multiple class="select-field" v-model="project.teamMembers">
-        <option v-for="user in users" :key="user.id" :value="user.id">
-          {{ user.firstName }} {{ user.lastName }} — {{ user.email }}
-        </option>
-      </select>
-    </div> -->
     
     <div class="form-group">
         <CustomDropDown
@@ -84,8 +71,10 @@ onMounted(async () => {
 
     users.value = (raw || [])
         .filter(u => u.role === "Team Member");
+    const allowedRoles = ["Administrator", "Project Manager"];
+
     projectManagers.value = (raw || [])
-        .filter(u => u.role === "Administrator");
+        .filter(u => allowedRoles.includes(u.role));
   } catch (err) {
     console.error(err);
   }
@@ -99,7 +88,11 @@ const { data, errorMessage, loading, request } = useAPIRequest({ method: 'POST' 
 
 async function addProject() {
   try {
-    await request({ endpoint: '/projects', body: project.value });
+    if (!project.value.projectManager) {
+      window.toast("Veuillez sélectionner un chef de projet.");
+      return;
+    }
+    const resp = await request({ endpoint: '/projects', body: project.value });
     window.toast("Project " + project.value.projectId + " stored");
 
 
