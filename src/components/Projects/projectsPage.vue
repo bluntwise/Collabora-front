@@ -4,7 +4,7 @@
 
   <div class="response">
     <ul v-if="response">
-      <li v-for="project in projects" :key="project.id">
+      <li v-for="project in projects" :key="project.projectId">
         {{ project.name }}
         {{ project.projectId }} - {{ project.description }} -
         {{ project.startDate }} - {{ project.endDate }}

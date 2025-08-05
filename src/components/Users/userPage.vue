@@ -1,10 +1,10 @@
 <template>
   <div class="response">
     <ul v-if="response">
-      <li v-for="user in response" :key="user.id" class="users">
+      <li v-for="user in response" :key="user._id" class="users">
         <strong>{{ user.firstName }} {{ user.lastName }}</strong> -
         <em>{{ user.role }}</em> ({{ user.email }})
-        <button class="btn-delete" @click="onDelete(user.id)">
+        <button class="btn-delete" @click="onDelete(user._id)">
           Supprimer
         </button>
       </li>
@@ -38,10 +38,10 @@ async function onDelete(userId) {
   try {
     await deleteRequest({ endpoint: `/users/${userId}` });
     // Mise à jour correcte de la liste
-    let userDelete = response.value.filter(user => user.id === userId)[0];
+    let userDelete = response.value.filter(user => user._id === userId)[0];
 
     console.log(userDelete);
-    response.value = response.value.filter(user => user.id !== userId);
+    response.value = response.value.filter(user => user._id !== userId);
     window.toast(response?.message || `Utilisateur ${userDelete.firstName} supprimé avec succès.`, 'success');
 
   } catch (error) {

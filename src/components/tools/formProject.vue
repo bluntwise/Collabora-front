@@ -22,13 +22,14 @@
       <input type="date" name="endDate" placeholder="endDate" required class="input-field" v-model="project.endDate" />
     </div>
 
-    
+
     <div class="form-group">
         <CustomDropDown
           label="Chef de projet"
           :options="projectManagers"
           v-model="project.projectManager"
           placeholder="-- Sélectionner un chef de projet --"
+          @update:modelValue="val => console.log('membres sélectionnés :', val)"
         />
     </div>
 
@@ -41,7 +42,7 @@
             multiple
         />
     </div>
-    
+
 
 
     <div class="form-button">
@@ -68,13 +69,15 @@ onMounted(async () => {
   const { request } = useAPIRequest({ method: "GET" });
   try {
     const raw = await request({ endpoint: "/users" });
-
+    console.log(raw);
     users.value = (raw || [])
         .filter(u => u.role === "Team Member");
     const allowedRoles = ["Administrator", "Project Manager"];
-
+    // projectManagers.value = (raw || [])
+    //     .filter(u => u.role === "Project Manager");
     projectManagers.value = (raw || [])
         .filter(u => allowedRoles.includes(u.role));
+    console.log(projectManagers.value)
   } catch (err) {
     console.error(err);
   }
@@ -88,6 +91,7 @@ const { data, errorMessage, loading, request } = useAPIRequest({ method: 'POST' 
 
 async function addProject() {
   try {
+    console.log(project.value);
     if (!project.value.projectManager) {
       window.toast("Veuillez sélectionner un chef de projet.");
       return;

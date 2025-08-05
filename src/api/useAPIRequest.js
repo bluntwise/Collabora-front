@@ -14,11 +14,16 @@ export default function useAPIRequest({ method = 'GET' } = {}) {
         errorMessage.value = null;
 
         const url = `${apiUrl}${endpoint}`;
-        const headers = { 'x-api-key': apiKey };
+        const headers = {};
+
+        const token = localStorage.getItem('token');
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
         if (body && !(body instanceof FormData)) {
             headers['Content-Type'] = 'application/json';
         }
-
         const options = { method, headers };
         if (body) {
             options.body = body instanceof FormData ? body : JSON.stringify(body);
