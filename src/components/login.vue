@@ -24,6 +24,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import useAPIRequest from '@/api/useAPIRequest.js';
+import { token } from '@/stores/auth.js'
 
 const firstName = ref('')
 const password = ref('')
@@ -48,8 +49,8 @@ const handleLogin = async () => {
         password: password.value,
       }
     });
-    console.log("hi")
     localStorage.setItem('token', response.token)
+    token.value = localStorage.getItem('token') // <-- déclenche le `watch()` dans Navbar.vue
     router.push('/users')
   } catch (err) {
     error.value = err.response?.data?.error || 'Erreur lors de la connexion'

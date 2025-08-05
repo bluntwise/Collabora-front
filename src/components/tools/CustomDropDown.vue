@@ -11,8 +11,8 @@
       </option>
       <option
         v-for="option in options"
-        :key="option.id"
-        :value="option.id"
+        :key="option._id"
+        :value="option._id"
       >
         {{ optionLabel(option) }}
       </option>
